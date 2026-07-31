@@ -44,8 +44,8 @@ runs:
       run: |
         # Validate inputs
         if [ -z "${{ inputs.topic-id }}" ] && ([ -z "${{ inputs.category-id }}" ] || [ -z "${{ inputs.title }}" ]); then
-          echo "❌ Error: Must provide either topic-id OR both category-id and title"
-          exit 1
+          echo "⚠️  Discourse notification skipped (no topic-id or category-id/title configured on fork)."
+          exit 0
         fi
         
         if [ -n "${{ inputs.topic-id }}" ] && ([ -n "${{ inputs.category-id }}" ] || [ -n "${{ inputs.title }}" ]); then
